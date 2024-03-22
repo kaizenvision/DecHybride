@@ -5,6 +5,8 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.util.Utility;
+
 public class BaseClass {
 	
 	public static WebDriver driver;
@@ -18,7 +20,7 @@ public class BaseClass {
 		
 		driver.manage().window().maximize();
 		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		Utility.setImplicitWait(10);
 		
 	}
 

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.hybrid.BaseClass;
+import com.util.Utility;
 
 // java design patteren Page Object Model
 public class LoginPagePom extends BaseClass {
@@ -53,15 +54,15 @@ public class LoginPagePom extends BaseClass {
 	}
 	
 	public void setUsername(String username) {
-		inputUser.sendKeys(username);
+		Utility.setText(username,inputUser);
 	}
 	
 	public void setPassword(String password) {
-		inputPassword.sendKeys(password);
+		Utility.setText(password,inputPassword);
 	}
 	
 	public void login() {
-		submitButton.click();
+		Utility.elementClick(submitButton);
 	}
 
 }
