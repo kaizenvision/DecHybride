@@ -41,7 +41,6 @@ public class LoginPageTest extends BaseClass {
 		loginPagePom.setUsername(username);
 		loginPagePom.setPassword(password);
 		loginPagePom.login();
-		
 	}
 
 }
