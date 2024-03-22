@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-03-21T08:00:55 IST" name="Default suite" finished-at="2024-03-21T08:01:10 IST" duration-ms="15158">
+    <groups>
+    </groups>
+    <test started-at="2024-03-21T08:00:55 IST" name="Default test" finished-at="2024-03-21T08:01:10 IST" duration-ms="15158">
+      <class name="com.hybrid.LoginPageTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.hybrid.LoginPageTest@139982de]" started-at="2024-03-21T08:00:55 IST" name="setup" finished-at="2024-03-21T08:01:06 IST" duration-ms="10738" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="adminLogin()[pri:0, instance:com.hybrid.LoginPageTest@139982de]" started-at="2024-03-21T08:01:06 IST" name="adminLogin" finished-at="2024-03-21T08:01:10 IST" duration-ms="3541" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- adminLogin -->
+        <test-method signature="testTitle()[pri:0, instance:com.hybrid.LoginPageTest@139982de]" started-at="2024-03-21T08:01:10 IST" name="testTitle" finished-at="2024-03-21T08:01:10 IST" duration-ms="25" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTitle -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.hybrid.LoginPageTest@139982de]" started-at="2024-03-21T08:01:10 IST" name="teardown" finished-at="2024-03-21T08:01:10 IST" duration-ms="742" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.hybrid.LoginPageTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
