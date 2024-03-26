@@ -10,7 +10,7 @@ import com.util.Utility;
 public class BaseClass {
 	
 	public static WebDriver driver;
-	
+	public static String projectPath = System.getProperty("user.dir");
 	
 	public void launchWebsite() {
 		
