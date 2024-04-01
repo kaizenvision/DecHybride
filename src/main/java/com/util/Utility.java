@@ -27,7 +27,7 @@ public class Utility extends BaseClass {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
 	}
 	
-	public String takeScreenShot(String testName) throws IOException {
+	public static String takeScreenShot(String testName) throws IOException {
 		File scr = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMDDhhmmss"));
 		String des = projectPath + "//screenshot//"+testName+currentTime+" .png";

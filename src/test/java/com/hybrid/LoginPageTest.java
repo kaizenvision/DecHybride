@@ -1,26 +1,31 @@
 package com.hybrid;
 
+import java.io.IOException;
+import java.time.Duration;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.pomclasses.LoginPagePom;
+import com.util.Utility;
 
 public class LoginPageTest extends BaseClass {
 	
-	LoginPagePom loginPagePom =new LoginPagePom();
-	BaseClass baseClass = new BaseClass();
 	
-	@BeforeClass
+	
+	@BeforeTest
 	public void setup() {
-		baseClass.launchWebsite();
+		//launchWebsite();
 	}
 	
-	@AfterClass
+	@AfterTest
 	public void teardown() {
-		driver.close();
+		//driver.close();
 	}
 	
 	@Test
@@ -32,8 +37,8 @@ public class LoginPageTest extends BaseClass {
 		Assert.assertEquals(webTitle, "OrangeHRM");
 	}
 	
-	@Test
-	public void adminLogin() {
+	@Test(groups = {"login"})
+	public void adminLogin() throws IOException {
 		SoftAssert assert1 = new SoftAssert();
 		LoginPagePom loginPagePom =new LoginPagePom();
 		String username = loginPagePom.getUsername();
@@ -43,6 +48,9 @@ public class LoginPageTest extends BaseClass {
 		loginPagePom.setUsername(username);
 		loginPagePom.setPassword(password);
 		loginPagePom.login();
+		
+		Utility.takeScreenShot("adminLogin");
+		
 		assert1.assertAll();
 	}
 

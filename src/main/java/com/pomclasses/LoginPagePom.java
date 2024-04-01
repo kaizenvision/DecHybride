@@ -61,8 +61,9 @@ public class LoginPagePom extends BaseClass {
 		Utility.setText(password,inputPassword);
 	}
 	
-	public void login() {
+	public AdminPagePom login() {
 		Utility.elementClick(submitButton);
+		return new AdminPagePom();
 	}
 
 }

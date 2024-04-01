@@ -32,30 +32,31 @@ public class ExcelReaderUtility {
 			return sh.getRow(rowNum).getCell(colNum).getNumericCellValue();
 	}
 	
-	public Map<String, Object> readEntireSheet(Sheet sh, int rowNum, int colNum) {
+	public Object[][] readEntireSheet(Sheet sh) {
 		
-		Map<String, Object> data = new HashMap<>();
+		int rowcount = sh.getLastRowNum();
+		Object excelsheetData[][] = new Object[rowcount][1];
 		
-		for(int i= 0; i<sh.getLastRowNum();i++) {
+		for(int i= 0; i<rowcount;i++) {
 			
+			Map<String, Object> data = new HashMap<String, Object>();
 			int cellNum = sh.getRow(i).getLastCellNum();
 			
 			for(int col = 0; col <cellNum; col++) {
-				
-				if(sh.getRow(rowNum).getCell(colNum).getCellType().toString().equalsIgnoreCase("string"))
-					 data.put(sh.getRow(0).getCell(0).getStringCellValue(),  
-							sh.getRow(rowNum).getCell(colNum).getStringCellValue());
-					
+				if(sh.getRow(i).getCell(col).getCellType().toString().equalsIgnoreCase("string"))
+					 data.put(sh.getRow(0).getCell(col).getStringCellValue(),  
+							sh.getRow(i+1).getCell(col).getStringCellValue());
 				else
-					 data.put(sh.getRow(0).getCell(0).getStringCellValue(),  
-							sh.getRow(rowNum).getCell(colNum).getNumericCellValue());
+					 data.put(sh.getRow(0).getCell(col).getStringCellValue(),  
+							sh.getRow(i+1).getCell(col).getNumericCellValue());
 			}
-		
+			System.out.println(data);
+			excelsheetData[i][0] = data;
 		}
-		return data;
+		
+		return excelsheetData;
 		
 	}
-	
 	public void readRowData() {
 		
 	}
