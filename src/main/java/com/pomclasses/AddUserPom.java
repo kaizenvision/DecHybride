@@ -2,24 +2,27 @@ package com.pomclasses;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
+import com.hybrid.BaseClass;
 import com.util.Utility;
 
-public class AddUserPom {
+public class AddUserPom extends BaseClass {
 	
 	{
-		
+		PageFactory.initElements(driver, this);
 	}
 	
 	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	private WebElement addButton;
-	
+	@FindBy(xpath="(//div[@class='oxd-select-wrapper'])[1]")
+	private WebElement userArrowRole;
 	//Select UserRoll
 	@FindBy(xpath="(//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow'])[1]")
 	private WebElement userRole;
-	@FindBy(xpath="//div[text()='Admin']")
+	@FindBy(xpath="//div/span[text()='Admin']")
 	private WebElement AdminRole;
-	@FindBy(xpath="//div[text()='ESS']")
+	@FindBy(xpath="//div/span[text()='ESS']")
 	private WebElement ESSRole;
 	
 	@FindBy(xpath="//input[@placeholder='Type for hints...']")
@@ -57,10 +60,13 @@ public class AddUserPom {
 		Utility.elementClick(addButton);
 	}
 
-	public void AdminAdduserRole( ) 
+	public void AdminAdduserRole( String user_role) 
 	{   
-		//act.click(userRole).moveToElement(AdminRole).click(AdminRole).build().perform();
-		Utility.elementClick(userRole);
+		Utility.getActionsclassObj().click(userArrowRole).build().perform();
+		if(user_role.equalsIgnoreCase("Admin"))
+			Utility.getActionsclassObj().moveToElement(AdminRole).click(AdminRole).build().perform();
+		else
+			Utility.getActionsclassObj().moveToElement(ESSRole).click(ESSRole).build().perform();
 	}
 	public void AdminAdduserEmpName( String username) 
 	{   

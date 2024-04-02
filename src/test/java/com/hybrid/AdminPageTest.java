@@ -7,13 +7,16 @@ import java.awt.event.KeyEvent;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.listner.MyListner;
 import com.pomclasses.AdminPagePom;
 import com.pomclasses.LoginPagePom;
 import com.util.Utility;
 
+@Listeners(MyListner.class)
 public class AdminPageTest extends BaseClass {
 	
 	@BeforeTest
