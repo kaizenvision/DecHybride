@@ -10,6 +10,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.hybrid.BaseClass;
 
@@ -25,6 +26,11 @@ public class Utility extends BaseClass {
 	
 	public static void setImplicitWait(int sec) {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
+	}
+	
+	public static Actions getActionsclassObj() {
+		 Actions act = new Actions(driver);
+		 return act;
 	}
 	
 	public static String takeScreenShot(String testName) throws IOException {

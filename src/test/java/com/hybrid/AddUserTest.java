@@ -14,11 +14,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.listner.MyListner;
+
 import com.pomclasses.AddUserPom;
 import com.util.ExcelReaderUtility;
 import com.util.Utility;
-@Listeners(MyListner.class)
+
 public class AddUserTest extends BaseClass {
 	
 	@BeforeTest
@@ -43,9 +43,6 @@ public class AddUserTest extends BaseClass {
 	@Test(dataProvider = "users", dependsOnGroups = {"regression"})
 	public void addUserTest(Map<String,Object> data) {
 		AddUserPom addUserPom = new AddUserPom();
-		Utility.getActionsclassObj().pause(Duration.ofSeconds(10)).build().perform();
-		addUserPom.adminAddButton();
-		Utility.getActionsclassObj().pause(Duration.ofSeconds(10)).build().perform();
 		addUserPom.AdminAdduserRole(data.get("userrole").toString());
 		System.out.println(data.get("userrole")+""+data.get("empname")+""+data.get("status")+""+
 				data.get("username")+""+data.get("password")+""+data.get("confirmpassword"));

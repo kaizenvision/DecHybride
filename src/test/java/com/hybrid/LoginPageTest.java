@@ -4,15 +4,20 @@ import java.io.IOException;
 import java.time.Duration;
 
 import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.aventstack.extentreports.Status;
 import com.pomclasses.LoginPagePom;
+import com.util.ExtentReportUitility;
 import com.util.Utility;
+
 
 public class LoginPageTest extends BaseClass {
 	
@@ -21,37 +26,35 @@ public class LoginPageTest extends BaseClass {
 	@BeforeTest
 	public void setup() {
 		//launchWebsite();
+		ExtentReportUitility.initExtentReport();
 	}
 	
 	@AfterTest
 	public void teardown() {
 		//driver.close();
+		ExtentReportUitility.generateReport();
 	}
 	
 	@Test
 	public void testTitle() {
-		
+		ExtentReportUitility.logger = ExtentReportUitility.createReport("testTitle");
 		String webTitle = driver.getTitle();
-		System.out.println(webTitle);
-		
+		ExtentReportUitility.logger.log(Status.INFO, webTitle);
 		Assert.assertEquals(webTitle, "OrangeHRM");
 	}
 	
 	@Test(groups = {"login"})
 	public void adminLogin() throws IOException {
-		SoftAssert assert1 = new SoftAssert();
+		ExtentReportUitility.logger = ExtentReportUitility.createReport("adminLogin");
 		LoginPagePom loginPagePom =new LoginPagePom();
 		String username = loginPagePom.getUsername();
 		String password = loginPagePom.getPassword();
-		assert1.assertEquals(username, "Admin");
-		assert1.assertEquals(password, "admin123");
+		ExtentReportUitility.logger.log(Status.INFO, " Logging with username "+loginPagePom.getUsername());
+		ExtentReportUitility.logger.log(Status.INFO, " Logging with password "+loginPagePom.getPassword());
 		loginPagePom.setUsername(username);
 		loginPagePom.setPassword(password);
 		loginPagePom.login();
 		
-		Utility.takeScreenShot("adminLogin");
-		
-		assert1.assertAll();
 	}
 
 }

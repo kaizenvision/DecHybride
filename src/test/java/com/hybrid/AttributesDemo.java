@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 
 import com.listner.MyTestLister;
 
-@Listeners(MyTestLister.class)
 public class AttributesDemo {
 	
 	@Test(groups = {"regression"})
